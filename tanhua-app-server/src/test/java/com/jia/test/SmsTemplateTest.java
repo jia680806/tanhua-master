@@ -17,6 +17,6 @@ public class SmsTemplateTest {
 
     @Test
     public void testSendSms(){
-        smsTemplate.sendSms("17666002208","2345");
+        smsTemplate.sendSms("17666000000","2345");
     }
 }
