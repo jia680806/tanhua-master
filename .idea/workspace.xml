@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="22d7acb9-2b4b-4aa6-b9a1-2832390b83aa" name="Changes" comment="tanhua" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/tanhua-app-server/src/main/java/com/jia/server/AppServerApplication.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tanhua-app-server/src/main/resources/application.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tanhua-app-server/src/test/java/com/jia/test/SMSTset.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tanhua-app-server/src/test/java/com/jia/test/SmsTemplateTest.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tanhua-autoconfig/src/main/java/com/jia/autoconfig/TanhuaAutoConfiguration.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tanhua-autoconfig/src/main/java/com/jia/autoconfig/template/SmsTemplate.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tanhua-autoconfig/src/main/resources/META-INF/spring.factories" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="H:\repository" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../apache-maven-3.8.1" />
+        <option name="userSettingsFile" value="H:\apache-maven-3.8.1\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2DFQb92peHJN3HhYTi37xdnaFs9" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.openapi.externalSystem.service.settings.ExternalSystemGroupConfigurable": "SELECTIVE",
+    "jdk.selected.JAVA_MODULE": "1.8",
+    "last_opened_file_path": "H:/ideaworkspace/tanhua1",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.291954",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "spring.configuration.checksum": "2a6ea4577e939a85fc1fd1fcb7f3de00"
+  }
+}]]></component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RunManager" selected="JUnit.SmsTemplateTest.testSendSms">
+    <configuration name="SMSTset" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.jia.test.SMSTset" />
+      <module name="tanhua-app-server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.jia.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SmsTemplateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="tanhua-app-server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.jia.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.jia.test" />
+      <option name="MAIN_CLASS_NAME" value="com.jia.test.SmsTemplateTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SmsTemplateTest.testSendSms" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="tanhua-app-server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.jia.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.jia.test" />
+      <option name="MAIN_CLASS_NAME" value="com.jia.test.SmsTemplateTest" />
+      <option name="METHOD_NAME" value="testSendSms" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AppServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="tanhua-app-server" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.jia.server.AppServerApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.jia.server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.SmsTemplateTest.testSendSms" />
+        <item itemvalue="JUnit.SmsTemplateTest" />
+        <item itemvalue="Application.SMSTset" />
+        <item itemvalue="Spring Boot.AppServerApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="22d7acb9-2b4b-4aa6-b9a1-2832390b83aa" name="Changes" comment="" />
+      <created>1660292423996</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1660292423996</updated>
+      <workItem from="1660292426340" duration="6166000" />
+      <workItem from="1660307631607" duration="128000" />
+      <workItem from="1660307778089" duration="4430000" />
+      <workItem from="1660458896685" duration="2431000" />
+      <workItem from="1660525080813" duration="1040000" />
+      <workItem from="1660551596729" duration="2586000" />
+    </task>
+    <task id="LOCAL-00001" summary="tanhua">
+      <created>1660459468154</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1660459468154</updated>
+    </task>
+    <task id="LOCAL-00002" summary="tanhua">
+      <created>1660525145365</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1660525145365</updated>
+    </task>
+    <task id="LOCAL-00003" summary="tanhua">
+      <created>1660525682374</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1660525682374</updated>
+    </task>
+    <task id="LOCAL-00004" summary="tanhua">
+      <created>1660525886762</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1660525886762</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
+    <MESSAGE value="tanhua" />
+    <option name="LAST_COMMIT_MESSAGE" value="tanhua" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
