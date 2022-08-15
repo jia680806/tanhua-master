@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="22d7acb9-2b4b-4aa6-b9a1-2832390b83aa" name="Changes" comment="tanhua">
+    <list default="true" id="22d7acb9-2b4b-4aa6-b9a1-2832390b83aa" name="Changes" comment="Initial commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tanhua-app-server/src/test/java/com/jia/test/SMSTset.java" beforeDir="false" afterPath="$PROJECT_DIR$/tanhua-app-server/src/test/java/com/jia/test/SMSTset.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tanhua-app-server/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tanhua-app-server/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tanhua-autoconfig/src/main/java/com/jia/autoconfig/TanhuaAutoConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/tanhua-autoconfig/src/main/java/com/jia/autoconfig/TanhuaAutoConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tanhua-autoconfig/src/main/java/com/jia/autoconfig/template/SmsTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/tanhua-autoconfig/src/main/java/com/jia/autoconfig/template/SmsTemplate.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -79,7 +80,7 @@
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
-  <component name="RunManager" selected="JUnit.SmsTemplateTest.testSendSms">
+  <component name="RunManager" selected="JUnit.SmsTemplateTest">
     <configuration name="SMSTset" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.jia.test.SMSTset" />
       <module name="tanhua-app-server" />
@@ -139,8 +140,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.SmsTemplateTest.testSendSms" />
         <item itemvalue="JUnit.SmsTemplateTest" />
+        <item itemvalue="JUnit.SmsTemplateTest.testSendSms" />
         <item itemvalue="Application.SMSTset" />
         <item itemvalue="Spring Boot.AppServerApplication" />
       </list>
@@ -159,7 +160,7 @@
       <workItem from="1660307778089" duration="4430000" />
       <workItem from="1660458896685" duration="2431000" />
       <workItem from="1660525080813" duration="1040000" />
-      <workItem from="1660551596729" duration="3093000" />
+      <workItem from="1660551596729" duration="6018000" />
     </task>
     <task id="LOCAL-00001" summary="tanhua">
       <created>1660459468154</created>
@@ -189,7 +190,21 @@
       <option name="project" value="LOCAL" />
       <updated>1660525886762</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="delete accessKeyId">
+      <created>1660554746162</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1660554746162</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Initial commit">
+      <created>1660554827943</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1660554827943</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,7 +226,9 @@
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
     <MESSAGE value="tanhua" />
-    <option name="LAST_COMMIT_MESSAGE" value="tanhua" />
+    <MESSAGE value="delete accessKeyId" />
+    <MESSAGE value="Initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

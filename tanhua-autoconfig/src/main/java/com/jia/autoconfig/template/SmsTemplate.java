@@ -5,28 +5,34 @@ import com.aliyun.dysmsapi20170525.models.SendSmsRequest;
 import com.aliyun.dysmsapi20170525.models.SendSmsResponse;
 import com.aliyun.dysmsapi20170525.models.SendSmsResponseBody;
 import com.aliyun.teaopenapi.models.Config;
+import com.jia.autoconfig.properties.SmsProperties;
 
 
 public class SmsTemplate {
+
+    private SmsProperties smsProperties;
+
+
+    public SmsTemplate (SmsProperties properties){
+        this.smsProperties = properties;
+    }
     public void sendSms(String mobile,String code)  {
 
-        String accessKeyId ="";
-        String accessKeySecret ="";
 
         try {
             Config config = new Config()
                     // 您的 AccessKey ID
-                    .setAccessKeyId(accessKeyId)
+                    .setAccessKeyId(smsProperties.getAccessKeyId())
                     // 您的 AccessKey Secret
-                    .setAccessKeySecret(accessKeySecret);
+                    .setAccessKeySecret(smsProperties.getAccessKeySecret());
             // 访问的域名
             config.endpoint = "dysmsapi.aliyuncs.com";
 
             Client client = new Client(config);
 
             SendSmsRequest sendSmsRequest = new SendSmsRequest()
-                    .setSignName("阿里云短信测试")
-                    .setTemplateCode("SMS_154950909")
+                    .setSignName(smsProperties.getSignName())
+                    .setTemplateCode(smsProperties.getTemplateCode())
                     .setPhoneNumbers(mobile)
                     .setTemplateParam("{\"code\":\""+code+"\"}");
 

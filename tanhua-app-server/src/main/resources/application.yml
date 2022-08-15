@@ -1,3 +1,10 @@
 spring:
   application:
     name: tanhua-app-server
+tanhua:
+  sms:
+    accessKeyId:
+    accessKeySecret:
+    signName: 阿里云短信测试
+    templateCode: SMS_154950909
+
