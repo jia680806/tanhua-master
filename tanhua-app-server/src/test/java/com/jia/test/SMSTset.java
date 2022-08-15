@@ -9,8 +9,8 @@ public class SMSTset {
    
 
     public static void main(String[] args_) throws Exception {
-        String accessKeyId ="LTAI5tAq48rJGAtUHYmPQKeq";
-        String accessKeySecret ="C3pNbR4JBZgeGzrhh5YGC8juBRUicQ";
+        String accessKeyId ="";
+        String accessKeySecret ="";
 
         try {
 

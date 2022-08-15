@@ -10,12 +10,10 @@ import com.aliyun.teaopenapi.models.Config;
 public class SmsTemplate {
     public void sendSms(String mobile,String code)  {
 
-        String accessKeyId ="LTAI5tAq48rJGAtUHYmPQKeq";
-        String accessKeySecret ="C3pNbR4JBZgeGzrhh5YGC8juBRUicQ";
+        String accessKeyId ="";
+        String accessKeySecret ="";
 
         try {
-
-
             Config config = new Config()
                     // 您的 AccessKey ID
                     .setAccessKeyId(accessKeyId)
