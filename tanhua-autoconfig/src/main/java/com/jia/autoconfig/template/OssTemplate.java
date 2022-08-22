@@ -13,6 +13,10 @@ import java.util.UUID;
 
 public class OssTemplate {
 
+    public OssTemplate(OssProperties ossProperties) {
+        this.ossProperties = ossProperties;
+    }
+
     private OssProperties ossProperties;
 
     public String  upload(String filename, InputStream is){
