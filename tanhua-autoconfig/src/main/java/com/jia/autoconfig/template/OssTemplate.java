@@ -6,8 +6,6 @@ import com.aliyun.oss.OSSClientBuilder;
 import com.aliyun.oss.OSSException;
 import com.jia.autoconfig.properties.OssProperties;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
