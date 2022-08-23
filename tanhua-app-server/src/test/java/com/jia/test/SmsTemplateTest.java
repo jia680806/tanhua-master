@@ -1,7 +1,7 @@
 package com.jia.test;
 
+import com.jia.tanhua.AppServerApplication;
 import com.jia.tanhua.autoconfig.template.SmsTemplate;
-import com.jia.server.AppServerApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class SmsTemplateTest {
     @Autowired
     private SmsTemplate smsTemplate;
+
 
     @Test
     public void testSendSms(){
