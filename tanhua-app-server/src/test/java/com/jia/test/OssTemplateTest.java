@@ -1,7 +1,7 @@
 package com.jia.test;
 
+import com.jia.tanhua.AppServerApplication;
 import com.jia.tanhua.autoconfig.template.OssTemplate;
-import com.jia.server.AppServerApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes =AppServerApplication.class)
+@SpringBootTest(classes = AppServerApplication.class)
 public class OssTemplateTest {
 
     @Autowired
