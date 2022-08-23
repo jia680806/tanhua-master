@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 @DubboService
 public class UserInfoImpl implements UserInfoApi {
 
+
     @Autowired
     private UserInfoMapper userInfoMapper;
+
     @Override
     public void save(UserInfo userInfo) {
         userInfoMapper.insert(userInfo);

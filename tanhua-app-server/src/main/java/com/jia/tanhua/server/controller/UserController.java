@@ -6,10 +6,8 @@ import com.jia.tanhua.server.UserInfoService;
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/user")
@@ -18,11 +16,19 @@ public class UserController {
     @Autowired
     private UserInfoService userInfoService;
 
+    /**
+     * 保存用户信息
+     * @param userInfo 用户填写的信息
+     * @param token
+     * @return
+     */
+
+    @PostMapping("/loginReginfo")
     public ResponseEntity loginReginfo(@RequestBody UserInfo userInfo,
                                        @RequestHeader("Authorization")String token){
 
         //判断token是否合法
-        if(token == null || !JwtUtils.verifyToken(token)){
+        if( !JwtUtils.verifyToken(token)){
             return ResponseEntity.status(401).body(null);
         }
 
@@ -32,6 +38,24 @@ public class UserController {
         //设置并保存id
         userInfo.setId(Long.valueOf(id));
         userInfoService.save(userInfo);
+
+        return ResponseEntity.ok(null);
+    }
+    @PostMapping("loginReginfo/head")
+    public ResponseEntity setHead(MultipartFile headPhoto,
+                                  @RequestHeader("Authorization")String token){
+        //判断token是否合法
+        if( !JwtUtils.verifyToken(token)){
+            return ResponseEntity.status(401).body(null);
+        }
+
+        //提取id信息
+        Claims claims = JwtUtils.getClaims(token);
+        Integer id = (Integer)claims.get("id");
+        Long userInfoId = Long.valueOf(id);
+
+        userInfoService.updateHead(headPhoto,userInfoId);
+
 
 
         return ResponseEntity.ok(null);
