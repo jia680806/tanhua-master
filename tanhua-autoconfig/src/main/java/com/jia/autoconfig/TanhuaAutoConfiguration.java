@@ -1,6 +1,7 @@
 package com.jia.autoconfig;
 
 import com.baidu.aip.face.AipFace;
+import com.jia.autoconfig.properties.AipFaceProperties;
 import com.jia.autoconfig.properties.OssProperties;
 import com.jia.autoconfig.properties.SmsProperties;
 import com.jia.autoconfig.template.AipFaceTemplate;
@@ -12,7 +13,7 @@ import org.springframework.context.annotation.Bean;
 @EnableConfigurationProperties({
         SmsProperties.class,
         OssProperties.class,
-        AipFaceTemplate.class})
+        AipFaceProperties.class})
 public class TanhuaAutoConfiguration {
     @Bean
     public SmsTemplate smsTemplate(SmsProperties properties){
