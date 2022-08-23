@@ -19,7 +19,7 @@ dubbo:
   registry:
     address: spring-cloud://localhost
   scan:
-    base-packages: com.jia.dubbo.api  #dubbo中包扫描
+    base-packages: com.jia.tanhua.dubbo.api  #dubbo中包扫描
 
 mybatis-plus:
   global-config:
