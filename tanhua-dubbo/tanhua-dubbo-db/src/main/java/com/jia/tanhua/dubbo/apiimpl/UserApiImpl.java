@@ -21,4 +21,10 @@ public class UserApiImpl implements UserApi {
         User user = userMapper.selectOne(queryWrapper);
         return user;
     }
+
+    @Override
+    public Long addUser(User user) {
+        userMapper.insert(user);
+        return user.getId();
+    }
 }
