@@ -3,11 +3,13 @@ package com.jia.autoconfig.template;
 
 import com.baidu.aip.face.AipFace;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashMap;
 
 public class AipFaceTemplate {
 
+    @Autowired
     private AipFace client;
 
     public Boolean detect(String imageUrl){
