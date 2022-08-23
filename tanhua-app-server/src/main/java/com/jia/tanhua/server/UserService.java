@@ -15,6 +15,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,7 +36,7 @@ public class UserService {
         String code = RandomStringUtils.randomNumeric(6);
         System.out.println(code);
         template.sendSms(phone,code);
-        redisTemplate.opsForValue().set("CODE_"+phone,code);
+        redisTemplate.opsForValue().set("CODE_"+phone,code, Duration.ofMinutes(50));
     }
 
 
