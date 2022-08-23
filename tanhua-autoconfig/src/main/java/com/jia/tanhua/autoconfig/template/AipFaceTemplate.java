@@ -1,4 +1,4 @@
-package com.jia.autoconfig.template;
+package com.jia.tanhua.autoconfig.template;
 
 
 import com.baidu.aip.face.AipFace;

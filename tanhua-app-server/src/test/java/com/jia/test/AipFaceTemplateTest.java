@@ -1,7 +1,7 @@
 package com.jia.test;
 
 
-import com.jia.autoconfig.template.AipFaceTemplate;
+import com.jia.tanhua.autoconfig.template.AipFaceTemplate;
 import com.jia.server.AppServerApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;

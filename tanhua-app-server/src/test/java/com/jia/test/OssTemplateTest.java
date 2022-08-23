@@ -1,6 +1,6 @@
 package com.jia.test;
 
-import com.jia.autoconfig.template.OssTemplate;
+import com.jia.tanhua.autoconfig.template.OssTemplate;
 import com.jia.server.AppServerApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;

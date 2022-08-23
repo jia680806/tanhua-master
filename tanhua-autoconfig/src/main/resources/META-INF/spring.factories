@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.jia.autoconfig.TanhuaAutoConfiguration
+com.jia.tanhua.autoconfig.TanhuaAutoConfiguration

@@ -1,11 +1,11 @@
-package com.jia.autoconfig.template;
+package com.jia.tanhua.autoconfig.template;
 
 import com.aliyun.dysmsapi20170525.Client;
 import com.aliyun.dysmsapi20170525.models.SendSmsRequest;
 import com.aliyun.dysmsapi20170525.models.SendSmsResponse;
 import com.aliyun.dysmsapi20170525.models.SendSmsResponseBody;
 import com.aliyun.teaopenapi.models.Config;
-import com.jia.autoconfig.properties.SmsProperties;
+import com.jia.tanhua.autoconfig.properties.SmsProperties;
 
 
 public class SmsTemplate {

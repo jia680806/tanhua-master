@@ -1,10 +1,10 @@
-package com.jia.autoconfig.template;
+package com.jia.tanhua.autoconfig.template;
 
 import com.aliyun.oss.ClientException;
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClientBuilder;
 import com.aliyun.oss.OSSException;
-import com.jia.autoconfig.properties.OssProperties;
+import com.jia.tanhua.autoconfig.properties.OssProperties;
 
 import java.io.InputStream;
 import java.text.SimpleDateFormat;

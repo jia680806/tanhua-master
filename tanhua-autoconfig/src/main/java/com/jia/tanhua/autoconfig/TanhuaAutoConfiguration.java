@@ -1,12 +1,11 @@
-package com.jia.autoconfig;
+package com.jia.tanhua.autoconfig;
 
-import com.baidu.aip.face.AipFace;
-import com.jia.autoconfig.properties.AipFaceProperties;
-import com.jia.autoconfig.properties.OssProperties;
-import com.jia.autoconfig.properties.SmsProperties;
-import com.jia.autoconfig.template.AipFaceTemplate;
-import com.jia.autoconfig.template.OssTemplate;
-import com.jia.autoconfig.template.SmsTemplate;
+import com.jia.tanhua.autoconfig.properties.AipFaceProperties;
+import com.jia.tanhua.autoconfig.properties.OssProperties;
+import com.jia.tanhua.autoconfig.properties.SmsProperties;
+import com.jia.tanhua.autoconfig.template.AipFaceTemplate;
+import com.jia.tanhua.autoconfig.template.OssTemplate;
+import com.jia.tanhua.autoconfig.template.SmsTemplate;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 

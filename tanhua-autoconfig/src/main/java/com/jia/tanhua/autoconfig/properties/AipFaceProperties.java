@@ -1,4 +1,4 @@
-package com.jia.autoconfig.properties;
+package com.jia.tanhua.autoconfig.properties;
 
 import com.baidu.aip.face.AipFace;
 import lombok.Data;

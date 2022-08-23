@@ -1,4 +1,4 @@
-package com.jia.autoconfig.properties;
+package com.jia.tanhua.autoconfig.properties;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
