@@ -39,5 +39,14 @@ public class UserController{
      }
  * 检验登录
  */
-
+    @PostMapping("/loginVerification")
+    public ResponseEntity loginVerification(@RequestBody Map map) {
+        //1、调用map集合获取请求参数
+        String phone = (String) map.get("phone");
+        String code = (String) map.get("verificationCode");
+        //2、调用userService完成用户登录
+        Map retMap = userService.loginVerification(phone,code);
+        //3、构造返回
+        return ResponseEntity.ok(retMap);
+    }
 }
