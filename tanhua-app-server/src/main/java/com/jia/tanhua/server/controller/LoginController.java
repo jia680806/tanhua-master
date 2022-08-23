@@ -10,35 +10,27 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
-public class UserController{
-
+@RestController
+@RequestMapping("/user")
+public class LoginController {
 
     @Autowired
     private UserService userService;
 
-    @RestController
-    @RequestMapping("/user")
-    public class LoginController {
-
-        @Autowired
-        private UserService userService;
-
-        /**
-         * 获取登录验证码
-         *   请求参数：phone （Map）
-         *   响应：void
-         */
-        @PostMapping("/login")
-        public ResponseEntity login(@RequestBody Map map){
-            String phone =(String) map.get("phone");
-            userService.sendMsg(phone);
-            return ResponseEntity.ok(null); //正常返回状态码200
-        }
-    }
     /**
-     }
- * 检验登录
- */
+     * 获取登录验证码
+     *   请求参数：phone （Map）
+     *   响应：void
+     */
+    @PostMapping("/login")
+    public ResponseEntity login(@RequestBody Map map){
+        String phone =(String) map.get("phone");
+        userService.sendMsg(phone);
+        return ResponseEntity.ok(null); //正常返回状态码200
+    }
+        /**
+        * 检验登录
+        */
     @PostMapping("/loginVerification")
     public ResponseEntity loginVerification(@RequestBody Map map) {
         //1、调用map集合获取请求参数
