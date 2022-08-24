@@ -1,6 +1,6 @@
 package com.jia.tanhua.server.controller;
 
-import com.jia.tanhua.server.UserService;
+import com.jia.tanhua.server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

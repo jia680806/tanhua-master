@@ -2,7 +2,7 @@ package com.jia.tanhua.server.controller;
 
 import com.jia.tanhua.commons.utils.JwtUtils;
 import com.jia.tanhua.domain.UserInfo;
-import com.jia.tanhua.server.UserInfoService;
+import com.jia.tanhua.server.service.UserInfoService;
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.jia.tanhua.server;
+package com.jia.tanhua.server.service;
 
 import com.jia.tanhua.autoconfig.template.SmsTemplate;
 
