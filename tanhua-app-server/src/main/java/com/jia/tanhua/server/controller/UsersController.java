@@ -1,0 +1,39 @@
+package com.jia.tanhua.server.controller;
+
+import com.jia.tanhua.commons.utils.JwtUtils;
+import com.jia.tanhua.domain.UserInfo;
+import com.jia.tanhua.server.UserInfoService;
+import io.jsonwebtoken.Claims;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import javax.swing.*;
+
+@RestController
+public class UsersController {
+    @Autowired
+    private UserInfoService userInfoService;
+
+    @PutMapping("/users")
+    public ResponseEntity getUserinfo(Long userId,
+                                      @RequestHeader("Authorization") String token){
+        if (!JwtUtils.verifyToken(token)){
+            throw new RuntimeException("token失效");
+        }
+
+        if (userId == null){
+            Claims claims = JwtUtils.getClaims(token);
+            Integer id = (Integer) claims.get("id");
+            userId = Long.valueOf(id);
+        }
+
+        userInfoService.getUserInfo(userId);
+
+
+
+        return ResponseEntity.ok(null);
+
+
+    }
+}

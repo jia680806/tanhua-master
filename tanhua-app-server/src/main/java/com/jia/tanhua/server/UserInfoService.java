@@ -50,9 +50,9 @@ public class UserInfoService {
             throw new RuntimeException(e);
         }
 
+    }
 
-
-
-
+    public void getUserInfo(Long id) {
+        userInfoApi.findUserInfoById(id);
     }
 }
