@@ -4,8 +4,10 @@ import com.jia.tanhua.autoconfig.template.AipFaceTemplate;
 import com.jia.tanhua.autoconfig.template.OssTemplate;
 import com.jia.tanhua.domain.UserInfo;
 import com.jia.tanhua.dubbo.api.UserInfoApi;
+import com.jia.tanhua.vo.UserInfoVo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -52,7 +54,17 @@ public class UserInfoService {
 
     }
 
-    public UserInfo getUserInfo(Long id) {
-        return  userInfoApi.findUserInfoById(id);
+    public UserInfoVo getUserInfo(Long id) {
+        UserInfo userInfo = userInfoApi.findUserInfoById(id);
+        UserInfoVo userInfoVo = new UserInfoVo();
+
+        BeanUtils.copyProperties(userInfo,userInfoVo);
+        String age =  String.valueOf(userInfo.getAge());
+
+        userInfoVo.setAge(age);
+
+        return userInfoVo;
+
+
     }
 }

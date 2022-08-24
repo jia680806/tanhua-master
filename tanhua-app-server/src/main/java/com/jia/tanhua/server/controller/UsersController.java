@@ -1,8 +1,9 @@
 package com.jia.tanhua.server.controller;
 
 import com.jia.tanhua.commons.utils.JwtUtils;
-import com.jia.tanhua.domain.UserInfo;
+
 import com.jia.tanhua.server.UserInfoService;
+import com.jia.tanhua.vo.UserInfoVo;
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -29,11 +30,9 @@ public class UsersController {
             userId = Long.valueOf(id);
         }
 
-        UserInfo userInfo =  userInfoService.getUserInfo(userId);
+        UserInfoVo userInfovo =  userInfoService.getUserInfo(userId);
 
-
-
-        return ResponseEntity.ok(userInfo);
+        return ResponseEntity.ok(userInfovo);
 
 
     }
