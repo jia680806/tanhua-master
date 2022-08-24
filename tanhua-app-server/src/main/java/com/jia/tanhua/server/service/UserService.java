@@ -5,6 +5,8 @@ import com.jia.tanhua.autoconfig.template.SmsTemplate;
 import com.jia.tanhua.commons.utils.JwtUtils;
 import com.jia.tanhua.domain.User;
 import com.jia.tanhua.dubbo.api.UserApi;
+import com.jia.tanhua.server.exception.BusinessException;
+import com.jia.tanhua.vo.ErrorResult;
 import lombok.extern.log4j.Log4j;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang.RandomStringUtils;
@@ -43,7 +45,7 @@ public class UserService {
     public Map loginVerification(String phone, String code) {
         String redisCode = (String) redisTemplate.opsForValue().get("CODE_"+phone);
         if (StringUtils.isEmpty(redisCode) || !redisCode.equals(code)){
-            throw new RuntimeException();
+            throw new BusinessException(ErrorResult.loginError());
         }
 
         Boolean isNew = false;
