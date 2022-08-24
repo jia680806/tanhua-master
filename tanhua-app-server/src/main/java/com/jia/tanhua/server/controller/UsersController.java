@@ -8,14 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.*;
+
 
 @RestController
+@RequestMapping("/users")
 public class UsersController {
     @Autowired
     private UserInfoService userInfoService;
 
-    @PutMapping("/users")
+    @GetMapping
     public ResponseEntity getUserinfo(Long userId,
                                       @RequestHeader("Authorization") String token){
         if (!JwtUtils.verifyToken(token)){
@@ -28,11 +29,11 @@ public class UsersController {
             userId = Long.valueOf(id);
         }
 
-        userInfoService.getUserInfo(userId);
+        UserInfo userInfo =  userInfoService.getUserInfo(userId);
 
 
 
-        return ResponseEntity.ok(null);
+        return ResponseEntity.ok(userInfo);
 
 
     }

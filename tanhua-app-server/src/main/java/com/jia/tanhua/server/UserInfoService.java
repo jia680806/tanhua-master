@@ -52,7 +52,7 @@ public class UserInfoService {
 
     }
 
-    public void getUserInfo(Long id) {
-        userInfoApi.findUserInfoById(id);
+    public UserInfo getUserInfo(Long id) {
+        return  userInfoApi.findUserInfoById(id);
     }
 }
