@@ -2,6 +2,7 @@ package com.jia.tanhua.server.interceptor;
 
 
 import com.jia.tanhua.commons.utils.JwtUtils;
+import io.jsonwebtoken.Claims;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -19,6 +20,10 @@ public class TokenInterceptor implements HandlerInterceptor {
             response.setStatus(401);
             return false;
         }
+        Claims claims = JwtUtils.getClaims(token);
+        Integer id =(Integer) claims.get("id");
+        BaseContext.setUserId(Long.valueOf(id));
+
         return true;
 
     }

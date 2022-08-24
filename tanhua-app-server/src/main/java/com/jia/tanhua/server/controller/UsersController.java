@@ -22,17 +22,10 @@ public class UsersController {
     private UserInfoService userInfoService;
 
     @GetMapping
-    public ResponseEntity getUserinfo(Long userId,
-                                      @RequestHeader("Authorization") String token){
-        if (!JwtUtils.verifyToken(token)){
-            throw new RuntimeException("token失效");
-        }
+    public ResponseEntity getUserinfo(Long userId){
 
-        if (userId == null){
-            Claims claims = JwtUtils.getClaims(token);
-            Integer id = (Integer) claims.get("id");
-            userId = Long.valueOf(id);
-        }
+        if (userId == null)
+            userId = BaseContext.getUserId();
 
         UserInfoVo userInfovo =  userInfoService.getUserInfo(userId);
 
@@ -41,8 +34,7 @@ public class UsersController {
     }
 
     @PutMapping
-    public ResponseEntity updateUserinfo(@RequestBody UserInfo userInfo,
-                                      @RequestHeader("Authorization") String token){
+    public ResponseEntity updateUserinfo(@RequestBody UserInfo userInfo){
 
         Long userId = BaseContext.getUserId();
 
@@ -53,8 +45,7 @@ public class UsersController {
 
     }
     @PostMapping("/header")
-    public ResponseEntity updateHead(@RequestHeader("Authorization") String token,
-                                     MultipartFile headPhoto){
+    public ResponseEntity updateHead(MultipartFile headPhoto){
 
         Long userId = BaseContext.getUserId();
 
