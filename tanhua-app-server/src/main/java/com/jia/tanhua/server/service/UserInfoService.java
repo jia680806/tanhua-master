@@ -4,6 +4,8 @@ import com.jia.tanhua.autoconfig.template.AipFaceTemplate;
 import com.jia.tanhua.autoconfig.template.OssTemplate;
 import com.jia.tanhua.domain.UserInfo;
 import com.jia.tanhua.dubbo.api.UserInfoApi;
+import com.jia.tanhua.server.exception.BusinessException;
+import com.jia.tanhua.vo.ErrorResult;
 import com.jia.tanhua.vo.UserInfoVo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
@@ -41,7 +43,7 @@ public class UserInfoService {
             Boolean isFace = faceTemplate.detect(headPhotoUrl);
 
             if (!isFace){
-                throw new RuntimeException();
+                throw new BusinessException(ErrorResult.faceError());
             }
             UserInfo userInfo = new UserInfo();
             userInfo.setAvatar(headPhotoUrl);
