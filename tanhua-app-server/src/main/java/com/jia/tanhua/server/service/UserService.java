@@ -6,6 +6,7 @@ import com.jia.tanhua.commons.utils.JwtUtils;
 import com.jia.tanhua.domain.User;
 import com.jia.tanhua.dubbo.api.UserApi;
 import com.jia.tanhua.server.exception.BusinessException;
+import com.jia.tanhua.server.filter.BaseContext;
 import com.jia.tanhua.vo.ErrorResult;
 import lombok.extern.log4j.Log4j;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -64,6 +65,7 @@ public class UserService {
         tokenMap.put("mobile",user.getMobile());
 
         String token = JwtUtils.getToken(tokenMap);
+        BaseContext.setToken(token);
 
         Map resMap = new HashMap<>();
         resMap.put("token",token);

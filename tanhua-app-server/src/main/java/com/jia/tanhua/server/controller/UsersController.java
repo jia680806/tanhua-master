@@ -3,13 +3,15 @@ package com.jia.tanhua.server.controller;
 import com.jia.tanhua.commons.utils.JwtUtils;
 
 import com.jia.tanhua.domain.UserInfo;
+import com.jia.tanhua.server.exception.BusinessException;
 import com.jia.tanhua.server.service.UserInfoService;
+import com.jia.tanhua.vo.ErrorResult;
 import com.jia.tanhua.vo.UserInfoVo;
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.multipart.MultipartFile;
 
 
 @RestController
@@ -49,6 +51,21 @@ public class UsersController {
 
         userInfo.setId(id);
         userInfoService.updateUserInfo(userInfo);
+
+        return ResponseEntity.ok(null);
+
+    }
+    @PostMapping("/header")
+    public ResponseEntity updateHead(@RequestHeader("Authorization") String token,
+                                     MultipartFile headPhoto){
+        if(!JwtUtils.verifyToken(token)){
+            throw new RuntimeException();
+        }
+        Claims claims = JwtUtils.getClaims(token);
+        Integer id = (Integer) claims.get("id");
+
+
+        userInfoService.updateHead(headPhoto,Long.valueOf(id));
 
         return ResponseEntity.ok(null);
 
