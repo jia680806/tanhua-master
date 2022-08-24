@@ -2,6 +2,7 @@ package com.jia.tanhua.server.controller;
 
 import com.jia.tanhua.commons.utils.JwtUtils;
 
+import com.jia.tanhua.domain.UserInfo;
 import com.jia.tanhua.server.UserInfoService;
 import com.jia.tanhua.vo.UserInfoVo;
 import io.jsonwebtoken.Claims;
@@ -34,6 +35,22 @@ public class UsersController {
 
         return ResponseEntity.ok(userInfovo);
 
+    }
+
+    @PutMapping
+    public ResponseEntity updateUserinfo(@RequestBody UserInfo userInfo,
+                                      @RequestHeader("Authorization") String token){
+        if( !JwtUtils.verifyToken(token)){
+            throw new RuntimeException();
+        }
+
+        Claims claims = JwtUtils.getClaims(token);
+        Long id = (Long) claims.get("id");
+
+        userInfo.setId(id);
+        userInfoService.updateUserInfo(userInfo);
+
+        return ResponseEntity.ok(null);
 
     }
 }

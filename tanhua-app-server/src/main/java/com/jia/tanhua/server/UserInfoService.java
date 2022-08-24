@@ -67,4 +67,8 @@ public class UserInfoService {
 
 
     }
+
+    public void updateUserInfo(UserInfo userInfo) {
+        userInfoApi.update(userInfo);
+    }
 }
