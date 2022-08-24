@@ -4,6 +4,7 @@ import com.jia.tanhua.commons.utils.JwtUtils;
 
 import com.jia.tanhua.domain.UserInfo;
 import com.jia.tanhua.server.exception.BusinessException;
+import com.jia.tanhua.server.interceptor.BaseContext;
 import com.jia.tanhua.server.service.UserInfoService;
 import com.jia.tanhua.vo.ErrorResult;
 import com.jia.tanhua.vo.UserInfoVo;
@@ -42,14 +43,10 @@ public class UsersController {
     @PutMapping
     public ResponseEntity updateUserinfo(@RequestBody UserInfo userInfo,
                                       @RequestHeader("Authorization") String token){
-        if( !JwtUtils.verifyToken(token)){
-            throw new RuntimeException();
-        }
 
-        Claims claims = JwtUtils.getClaims(token);
-        Long id = (Long) claims.get("id");
+        Long userId = BaseContext.getUserId();
 
-        userInfo.setId(id);
+        userInfo.setId(userId);
         userInfoService.updateUserInfo(userInfo);
 
         return ResponseEntity.ok(null);
@@ -58,14 +55,10 @@ public class UsersController {
     @PostMapping("/header")
     public ResponseEntity updateHead(@RequestHeader("Authorization") String token,
                                      MultipartFile headPhoto){
-        if(!JwtUtils.verifyToken(token)){
-            throw new RuntimeException();
-        }
-        Claims claims = JwtUtils.getClaims(token);
-        Integer id = (Integer) claims.get("id");
 
+        Long userId = BaseContext.getUserId();
 
-        userInfoService.updateHead(headPhoto,Long.valueOf(id));
+        userInfoService.updateHead(headPhoto,userId);
 
         return ResponseEntity.ok(null);
 
