@@ -113,6 +113,10 @@ public class UserInfoService {
 
     }
 
-    public void addQuestions(String content) {
+    public void addQuestion(String content) {
+        Question question = new Question();
+        question.setTxt(content);
+        question.setUserId(BaseContext.getUserId());
+        questionApi.saveQuestion(question);
     }
 }

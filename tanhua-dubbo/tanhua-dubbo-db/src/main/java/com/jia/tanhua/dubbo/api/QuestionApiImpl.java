@@ -22,4 +22,11 @@ public class QuestionApiImpl implements QuestionApi{
         Question question = questionMapper.selectOne(queryWrapper);
         return question;
     }
+
+    @Override
+    public void saveQuestion(Question question) {
+        questionMapper.insert(question);
+    }
+
+
 }

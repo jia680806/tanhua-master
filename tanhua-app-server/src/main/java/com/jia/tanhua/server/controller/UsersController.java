@@ -62,7 +62,7 @@ public class UsersController {
 
     @PostMapping("/questions")
     public ResponseEntity setQuestions(@RequestBody String content){
-        userInfoService.addQuestions(content);
+        userInfoService.addQuestion(content);
         return ResponseEntity.ok(null);
     }
 
