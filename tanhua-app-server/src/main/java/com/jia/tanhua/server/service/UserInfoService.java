@@ -120,10 +120,13 @@ public class UserInfoService {
 
 
       if (question == null) {
+          question = new Question();
           question.setTxt(content);
           question.setUserId(BaseContext.getUserId());
           questionApi.saveQuestion(question);
+      }else {
+            question.setTxt(content);
+            questionApi.updateQuestion(question);
       }
-      else questionApi.updateQuestion(question);
     }
 }

@@ -12,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.Map;
+
 
 @RestController
 @RequestMapping("/users")
@@ -61,8 +63,9 @@ public class UsersController {
     }
 
     @PostMapping("/questions")
-    public ResponseEntity setQuestions(@RequestBody String content){
-        userInfoService.addQuestion(content);
+    public ResponseEntity setQuestions(@RequestBody Map content){
+        String content1 =(String) content.get("content");
+        userInfoService.editQuestion(content1);
         return ResponseEntity.ok(null);
     }
 
