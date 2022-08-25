@@ -5,6 +5,8 @@ import com.jia.tanhua.autoconfig.template.OssTemplate;
 import com.jia.tanhua.domain.Question;
 import com.jia.tanhua.domain.Settings;
 import com.jia.tanhua.domain.UserInfo;
+import com.jia.tanhua.dubbo.api.QuestionApi;
+import com.jia.tanhua.dubbo.api.SettingsApi;
 import com.jia.tanhua.dubbo.api.UserInfoApi;
 import com.jia.tanhua.server.exception.BusinessException;
 import com.jia.tanhua.server.interceptor.BaseContext;
@@ -25,6 +27,10 @@ import java.io.IOException;
 public class UserInfoService {
     @DubboReference
     private UserInfoApi userInfoApi;
+    @DubboReference
+    private QuestionApi questionApi;
+    @DubboReference
+    private SettingsApi settingsApi;
 
     @Autowired
     private AipFaceTemplate faceTemplate;
@@ -91,13 +97,13 @@ public class UserInfoService {
         settingsVo.setPhone(phone);
 
         //3.获取用户陌生人问题
-        Question question = userInfoApi.findQuestionById(userId);
+        Question question = settingsApi.findQuestionByUserId(userId);
         if (question==null)
             settingsVo.setStrangerQuestion("该用户还没有想好要问什么，试下打声招呼吧");
         else settingsVo.setStrangerQuestion(question.getTxt());
 
         //4.获取用户app开关
-        Settings setting = userInfoApi.findSettingById(userId);
+        Settings setting = settingsApi.findSettingByUserId(userId);
         if (setting != null)
             BeanUtils.copyProperties(setting,settingsVo);
 
@@ -105,5 +111,8 @@ public class UserInfoService {
         return settingsVo;
 
 
+    }
+
+    public void addQuestions(String content) {
     }
 }

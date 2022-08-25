@@ -3,13 +3,10 @@ package com.jia.tanhua.server.controller;
 import com.jia.tanhua.commons.utils.JwtUtils;
 
 import com.jia.tanhua.domain.UserInfo;
-import com.jia.tanhua.server.exception.BusinessException;
 import com.jia.tanhua.server.interceptor.BaseContext;
 import com.jia.tanhua.server.service.UserInfoService;
-import com.jia.tanhua.vo.ErrorResult;
 import com.jia.tanhua.vo.SettingsVo;
 import com.jia.tanhua.vo.UserInfoVo;
-import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -61,6 +58,12 @@ public class UsersController {
         Long userId = BaseContext.getUserId();
         SettingsVo settingVo = userInfoService.getSettingVo(userId);
         return ResponseEntity.ok(settingVo);
+    }
+
+    @PostMapping("/questions")
+    public ResponseEntity setQuestions(@RequestBody String content){
+        userInfoService.addQuestions(content);
+        return ResponseEntity.ok(null);
     }
 
 }

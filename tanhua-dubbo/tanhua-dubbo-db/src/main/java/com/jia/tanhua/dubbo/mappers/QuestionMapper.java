@@ -5,4 +5,6 @@ import com.jia.tanhua.domain.Question;
 
 
 public interface QuestionMapper extends BaseMapper<Question> {
+
+
 }
