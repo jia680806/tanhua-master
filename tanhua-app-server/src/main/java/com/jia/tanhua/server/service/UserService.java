@@ -57,7 +57,6 @@ public class UserService {
             user.setPassword(DigestUtils.md5Hex("123456"));
             Long userId = userApi.addUser(user);
             user.setId(userId);
-            BaseContext.setUserId(userId);
             isNew = true;
         }
 

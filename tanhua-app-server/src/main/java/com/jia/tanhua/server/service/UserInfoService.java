@@ -2,10 +2,14 @@ package com.jia.tanhua.server.service;
 
 import com.jia.tanhua.autoconfig.template.AipFaceTemplate;
 import com.jia.tanhua.autoconfig.template.OssTemplate;
+import com.jia.tanhua.domain.Question;
+import com.jia.tanhua.domain.Settings;
 import com.jia.tanhua.domain.UserInfo;
 import com.jia.tanhua.dubbo.api.UserInfoApi;
 import com.jia.tanhua.server.exception.BusinessException;
+import com.jia.tanhua.server.interceptor.BaseContext;
 import com.jia.tanhua.vo.ErrorResult;
+import com.jia.tanhua.vo.SettingsVo;
 import com.jia.tanhua.vo.UserInfoVo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
@@ -72,5 +76,34 @@ public class UserInfoService {
 
     public void updateUserInfo(UserInfo userInfo) {
         userInfoApi.update(userInfo);
+    }
+
+    public SettingsVo getSettingVo(Long userId) {
+
+        SettingsVo settingsVo = new SettingsVo();
+
+        //1.获取用户id
+        Long id= BaseContext.getUserId();
+        settingsVo.setId(id);
+
+        //2.获取用户手机
+        String phone =BaseContext.getUserPhone();
+        settingsVo.setPhone(phone);
+
+        //3.获取用户陌生人问题
+        Question question = userInfoApi.findQuestionById(userId);
+        if (question==null)
+            settingsVo.setStrangerQuestion("该用户还没有想好要问什么，试下打声招呼吧");
+        else settingsVo.setStrangerQuestion(question.getTxt());
+
+        //4.获取用户app开关
+        Settings setting = userInfoApi.findSettingById(userId);
+        if (setting != null)
+            BeanUtils.copyProperties(setting,settingsVo);
+
+
+        return settingsVo;
+
+
     }
 }

@@ -7,6 +7,7 @@ import com.jia.tanhua.server.exception.BusinessException;
 import com.jia.tanhua.server.interceptor.BaseContext;
 import com.jia.tanhua.server.service.UserInfoService;
 import com.jia.tanhua.vo.ErrorResult;
+import com.jia.tanhua.vo.SettingsVo;
 import com.jia.tanhua.vo.UserInfoVo;
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,4 +55,12 @@ public class UsersController {
         return ResponseEntity.ok(null);
 
     }
+
+    @GetMapping( "/settings")
+    public ResponseEntity getSetting(){
+        Long userId = BaseContext.getUserId();
+        SettingsVo settingVo = userInfoService.getSettingVo(userId);
+        return ResponseEntity.ok(settingVo);
+    }
+
 }
