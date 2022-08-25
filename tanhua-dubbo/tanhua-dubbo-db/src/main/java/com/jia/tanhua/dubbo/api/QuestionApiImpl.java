@@ -14,8 +14,9 @@ public class QuestionApiImpl implements QuestionApi{
     @Autowired
     private QuestionMapper questionMapper;
 
+
     @Override
-    public Question findQuestionById(Long userId) {
+    public Question findQuestionByUserId(Long userId) {
         LambdaQueryWrapper<Question> queryWrapper = new LambdaQueryWrapper();
         queryWrapper.eq(Question::getUserId,userId);
         Question question = questionMapper.selectOne(queryWrapper);

@@ -97,7 +97,7 @@ public class UserInfoService {
         settingsVo.setPhone(phone);
 
         //3.获取用户陌生人问题
-        Question question = settingsApi.findQuestionByUserId(userId);
+        Question question = questionApi.findQuestionByUserId(userId);
         if (question==null)
             settingsVo.setStrangerQuestion("该用户还没有想好要问什么，试下打声招呼吧");
         else settingsVo.setStrangerQuestion(question.getTxt());
