@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Map;
 
 @Service
 @Slf4j
@@ -128,5 +129,19 @@ public class UserInfoService {
             question.setTxt(content);
             questionApi.updateQuestion(question);
       }
+    }
+
+    public void editSettings(Map settingsMap) {
+
+        boolean likeNotification = (boolean) settingsMap.get("likeNotification");
+        boolean pinglunNotification = (boolean) settingsMap.get("pinglunNotification");
+        boolean gonggaoNotification = (boolean) settingsMap.get("gonggaoNotification");
+        Settings settings = new Settings();
+        settings.setGonggaoNotification(gonggaoNotification);
+        settings.setPinglunNotification(pinglunNotification);
+        settings.setLikeNotification(likeNotification);
+        settings.setUserId(BaseContext.getUserId());
+
+        settingsApi.update(settings);
     }
 }
