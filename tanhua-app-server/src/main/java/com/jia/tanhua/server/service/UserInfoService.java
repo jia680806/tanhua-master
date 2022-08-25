@@ -113,10 +113,17 @@ public class UserInfoService {
 
     }
 
-    public void addQuestion(String content) {
-        Question question = new Question();
-        question.setTxt(content);
-        question.setUserId(BaseContext.getUserId());
-        questionApi.saveQuestion(question);
+    public void editQuestion(String content) {
+
+
+        Question question = questionApi.findQuestionByUserId(BaseContext.getUserId());
+
+
+      if (question == null) {
+          question.setTxt(content);
+          question.setUserId(BaseContext.getUserId());
+          questionApi.saveQuestion(question);
+      }
+      else questionApi.updateQuestion(question);
     }
 }

@@ -9,4 +9,7 @@ public interface QuestionApi {
 
 
     void saveQuestion(Question question);
+
+
+    void updateQuestion(Question question);
 }

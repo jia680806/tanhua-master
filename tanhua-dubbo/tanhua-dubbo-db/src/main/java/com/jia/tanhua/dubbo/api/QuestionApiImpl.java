@@ -28,5 +28,10 @@ public class QuestionApiImpl implements QuestionApi{
         questionMapper.insert(question);
     }
 
+    @Override
+    public void updateQuestion(Question question) {
+        questionMapper.updateById(question);
+    }
+
 
 }
