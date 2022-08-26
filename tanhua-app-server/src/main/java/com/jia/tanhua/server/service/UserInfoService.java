@@ -6,6 +6,7 @@ import com.jia.tanhua.autoconfig.template.OssTemplate;
 import com.jia.tanhua.domain.Question;
 import com.jia.tanhua.domain.Settings;
 import com.jia.tanhua.domain.UserInfo;
+import com.jia.tanhua.dubbo.api.BlackListApi;
 import com.jia.tanhua.dubbo.api.QuestionApi;
 import com.jia.tanhua.dubbo.api.SettingsApi;
 import com.jia.tanhua.dubbo.api.UserInfoApi;
@@ -34,6 +35,8 @@ public class UserInfoService {
     private QuestionApi questionApi;
     @DubboReference
     private SettingsApi settingsApi;
+    @DubboReference
+    private BlackListApi blackListApi;
 
     @Autowired
     private AipFaceTemplate faceTemplate;
@@ -148,6 +151,9 @@ public class UserInfoService {
     }
 
     public PageResult blacklist(int page,int size) {
+        Long userId = BaseContext.getUserId();
+        IPage<UserInfo> iPage = blackListApi.findByUserId(userId,page,size);
+        PageResult pageResult = new PageResult(page,size, (int) iPage.getTotal(),iPage.getRecords());
 
         return null;
     }
