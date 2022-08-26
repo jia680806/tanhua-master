@@ -6,4 +6,6 @@ import com.jia.tanhua.domain.UserInfo;
 public interface BlackListApi {
 
     IPage<UserInfo> findByUserId(Long userId, int page, int size);
+
+    void deleteBlackUser(Long userId, Long uid);
 }

@@ -155,6 +155,12 @@ public class UserInfoService {
         IPage<UserInfo> iPage = blackListApi.findByUserId(userId,page,size);
         PageResult pageResult = new PageResult(page,size, (int) iPage.getTotal(),iPage.getRecords());
 
-        return null;
+        return pageResult;
+    }
+
+    public void removeBlackUser(Long uid) {
+        Long userId = BaseContext.getUserId();
+        blackListApi.deleteBlackUser(userId,uid);
+
     }
 }

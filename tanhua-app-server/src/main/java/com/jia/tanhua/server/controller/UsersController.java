@@ -91,5 +91,12 @@ public class UsersController {
 
     }
 
+    @DeleteMapping("blacklist/{uid}")
+    public ResponseEntity removeBlackUser(@PathVariable("uid") Long uid){
+        userInfoService.removeBlackUser(uid);
+        return ResponseEntity.ok(null);
+
+    }
+
 
 }
