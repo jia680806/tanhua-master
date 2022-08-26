@@ -2,11 +2,14 @@ package com.jia.tanhua.server.controller;
 
 import com.jia.tanhua.commons.utils.JwtUtils;
 
+import com.jia.tanhua.domain.Settings;
 import com.jia.tanhua.domain.UserInfo;
 import com.jia.tanhua.server.interceptor.BaseContext;
 import com.jia.tanhua.server.service.UserInfoService;
+import com.jia.tanhua.vo.PageResult;
 import com.jia.tanhua.vo.SettingsVo;
 import com.jia.tanhua.vo.UserInfoVo;
+import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -68,5 +71,25 @@ public class UsersController {
         userInfoService.editQuestion(content1);
         return ResponseEntity.ok(null);
     }
+
+    @PostMapping("/notifications/setting")
+    public ResponseEntity setSettings(@RequestBody Map settingsMap){
+
+        userInfoService.editSettings(settingsMap);
+
+        return ResponseEntity.ok(null);
+
+    }
+
+    @GetMapping("/blacklist")
+    public ResponseEntity blacklist(
+            @RequestParam(defaultValue = "1") int page,
+            @RequestParam(defaultValue = "10") int size)
+    {
+        PageResult blackListPage = userInfoService.blacklist(page,size);
+        return ResponseEntity.ok(blackListPage);
+
+    }
+
 
 }

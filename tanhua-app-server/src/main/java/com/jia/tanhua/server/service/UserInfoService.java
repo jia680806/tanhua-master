@@ -1,5 +1,6 @@
 package com.jia.tanhua.server.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.jia.tanhua.autoconfig.template.AipFaceTemplate;
 import com.jia.tanhua.autoconfig.template.OssTemplate;
 import com.jia.tanhua.domain.Question;
@@ -11,6 +12,7 @@ import com.jia.tanhua.dubbo.api.UserInfoApi;
 import com.jia.tanhua.server.exception.BusinessException;
 import com.jia.tanhua.server.interceptor.BaseContext;
 import com.jia.tanhua.vo.ErrorResult;
+import com.jia.tanhua.vo.PageResult;
 import com.jia.tanhua.vo.SettingsVo;
 import com.jia.tanhua.vo.UserInfoVo;
 import lombok.extern.slf4j.Slf4j;
@@ -143,5 +145,10 @@ public class UserInfoService {
         settings.setUserId(BaseContext.getUserId());
 
         settingsApi.update(settings);
+    }
+
+    public PageResult blacklist(int page,int size) {
+
+        return null;
     }
 }
