@@ -72,7 +72,7 @@ public class UserInfoService {
 
     }
 
-    public UserInfoVo getUserInfo(Long id) {
+    public UserInfoVo getUserInfoVo(Long id) {
         UserInfo userInfo = userInfoApi.findUserInfoById(id);
         UserInfoVo userInfoVo = new UserInfoVo();
 
@@ -83,6 +83,12 @@ public class UserInfoService {
 
         return userInfoVo;
 
+    }
+
+    public UserInfo getUserInfo(Long id) {
+        UserInfo userInfo = userInfoApi.findUserInfoById(id);
+
+        return userInfo;
 
     }
 

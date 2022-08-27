@@ -30,7 +30,7 @@ public class UsersController {
         if (userId == null)
             userId = BaseContext.getUserId();
 
-        UserInfoVo userInfovo =  userInfoService.getUserInfo(userId);
+        UserInfoVo userInfovo =  userInfoService.getUserInfoVo(userId);
 
         return ResponseEntity.ok(userInfovo);
 
