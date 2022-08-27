@@ -36,9 +36,12 @@ public class UserService {
     private UserApi userApi;
 
     public void sendMsg(String phone) {
+        if (phone.length() != 11){
+            throw new BusinessException(ErrorResult.mobileLengthError());
+        }
         String code = RandomStringUtils.randomNumeric(6);
         System.out.println(code);
-        template.sendSms(phone,code);
+//        template.sendSms(phone,code);
         redisTemplate.opsForValue().set("CODE_"+phone,code, Duration.ofMinutes(50));
     }
 

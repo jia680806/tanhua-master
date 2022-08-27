@@ -34,6 +34,7 @@ public class ErrorResult {
         return ErrorResult.builder().errCode("000004").errMessage("手机号码已注册").build();
     }
 
+
     public static ErrorResult contentError() {
         return ErrorResult.builder().errCode("000005").errMessage("动态内容为空").build();
     }
@@ -53,4 +54,8 @@ public class ErrorResult {
     public static ErrorResult disloveError() {
         return ErrorResult.builder().errCode("000009").errMessage("用户未喜欢").build();
     }
+    public static ErrorResult mobileLengthError() {
+        return ErrorResult.builder().errCode("000010").errMessage("手机号码长度不正确").build();
+    }
+
 }
