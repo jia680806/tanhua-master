@@ -19,19 +19,9 @@ dubbo:    #dubbo配置
     check: false
 tanhua:
   sms:
-    signName: 阿里云短信测试
-    templateCode: SMS_154950909
-    accessKeyId: LTAI5tAq48rJGAtUHYmPQKeq
-    accessKeySecret: C3pNbR4JBZgeGzrhh5YGC8juBRUicQ
 
   oss:
-    accessKey: LTAI5tAq48rJGAtUHYmPQKeq
-    secret: C3pNbR4JBZgeGzrhh5YGC8juBRUicQ
-    bucketName: tanhua-master
-    url: https://tanhua-master.oss-cn-heyuan.aliyuncs.com/
-    endpoint: oss-cn-heyuan.aliyuncs.com
+
 
   aip:
-    appId: 27118630
-    apiKey: O4GoRa2Sz1342eTubzTyB1W0
-    secretKey: Ag1eHjBQnC0GMV7Gd1MyGeR5QR4gnHG9
+
