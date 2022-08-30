@@ -24,7 +24,8 @@ public class TanhuaController {
 
         TodayBest todayBest = tanhuaService.todayBest(userId);
 
-
         return ResponseEntity.ok(todayBest);
     }
+
+
 }
