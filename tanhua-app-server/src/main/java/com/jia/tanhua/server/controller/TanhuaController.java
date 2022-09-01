@@ -34,7 +34,7 @@ public class TanhuaController {
     public ResponseEntity recommendation(RecommendUserDto recommendUser){
         Long userId = BaseContext.getUserId();
 
-        PageResult pageResult = tanhuaService.recommendation(recommendUser);
+        PageResult pageResult = tanhuaService.newRecommendation(recommendUser);
 
 
         return ResponseEntity.ok(pageResult);
