@@ -63,7 +63,7 @@ public class TanhuaService {
         for (RecommendUser item : items) {
             UserInfo userInfo = userInfoApi.findUserInfoById(item.getUserId());
             if (userInfo!=null){
-                if (!StringUtils.isEmpty(userInfo.getGender())&& !userInfo.getGender().equals(dto.getGender())){
+                if (!StringUtils.isEmpty(dto.getGender())&& !userInfo.getGender().equals(dto.getGender())){
                     continue;
                 }
                 if (dto.getAge() != null && dto.getAge() < userInfo.getAge()){
