@@ -20,7 +20,7 @@ public class MovementsApiImpl implements MovementsApi {
     private IdWorker idWorker;
     @Autowired
     private MongoTemplate mongoTemplate;
-    @Override
+
     public void publish(Movement movement) {
         //1.设置pid、时间
         try {

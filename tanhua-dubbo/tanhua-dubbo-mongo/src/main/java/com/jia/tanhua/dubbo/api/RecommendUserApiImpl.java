@@ -1,6 +1,5 @@
 package com.jia.tanhua.dubbo.api;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.jia.tanhua.mongo.RecommendUser;
 import com.jia.tanhua.vo.PageResult;
 import org.apache.dubbo.config.annotation.DubboService;

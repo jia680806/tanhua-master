@@ -1,10 +1,11 @@
 package com.jia.tanhua.mongo;
 
+import cn.hutool.core.lang.ObjectId;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
+
 
 /**
  * 好友表:好友关系表
