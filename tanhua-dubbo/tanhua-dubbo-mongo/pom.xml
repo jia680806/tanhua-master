@@ -60,12 +60,6 @@
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
 
-        <!-- nacos配置中心依赖支持
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-        </dependency>
-        -->
         <dependency>
             <groupId>com.jia</groupId>
             <artifactId>tanhua-commons</artifactId>
@@ -80,7 +74,7 @@
     </dependencies>
 
     <build>
-        <finalName>tanhua-dubbo-db</finalName>
+        <finalName>tanhua-dubbo-mongo</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
