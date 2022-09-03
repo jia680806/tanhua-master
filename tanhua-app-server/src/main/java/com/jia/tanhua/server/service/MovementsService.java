@@ -1,13 +1,18 @@
 package com.jia.tanhua.server.service;
 
 import com.jia.tanhua.autoconfig.template.OssTemplate;
+import com.jia.tanhua.domain.UserInfo;
 import com.jia.tanhua.dubbo.api.MovementsApi;
+import com.jia.tanhua.dubbo.api.UserInfoApi;
 import com.jia.tanhua.mongo.Movement;
 import com.jia.tanhua.server.exception.BusinessException;
 import com.jia.tanhua.server.interceptor.BaseContext;
 import com.jia.tanhua.vo.ErrorResult;
+import com.jia.tanhua.vo.MovementsVo;
+import com.jia.tanhua.vo.PageResult;
 import org.apache.commons.lang.StringUtils;
 import org.apache.dubbo.config.annotation.DubboReference;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,6 +28,9 @@ public class MovementsService {
     private OssTemplate ossTemplate;
     @DubboReference
     private MovementsApi movementsApi;
+    
+    @DubboReference
+    private UserInfoApi userInfoApi;
 
     public void publishMovements(Movement movement, MultipartFile[] imageContent) throws IOException {
         Long userId = BaseContext.getUserId();
@@ -40,5 +48,27 @@ public class MovementsService {
         movement.setUserId(userId);
         movementsApi.publish(movement);
 
+    }
+
+    public PageResult findByUserId(Long userId, Integer page, Integer pagesize) {
+        PageResult pr = movementsApi.getMovementsById(userId,page,pagesize);
+        List<Movement> items = (List<Movement>) pr.getItems();
+        if (items == null){
+            return pr;
+        }
+
+        List<MovementsVo> MovementsVoList =new ArrayList<>();
+        MovementsVo movementsVo = new MovementsVo();
+        UserInfo userInfo = userInfoApi.findUserInfoById(userId);
+
+        for (Movement item : items) {
+            BeanUtils.copyProperties(item,movementsVo);
+//            BeanUtils.copyProperties(userInfo,movementsVo);
+//            MovementsVoList.add(movementsVo);
+           MovementsVo vo = MovementsVo.init(userInfo, item);
+        }
+        pr.setItems(MovementsVoList);
+
+        return pr;
     }
 }

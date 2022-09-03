@@ -5,8 +5,11 @@ import com.jia.tanhua.dubbo.utils.TimeLineService;
 import com.jia.tanhua.mongo.Friend;
 import com.jia.tanhua.mongo.Movement;
 import com.jia.tanhua.mongo.MovementTimeLine;
+import com.jia.tanhua.vo.MovementsVo;
+import com.jia.tanhua.vo.PageResult;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -50,4 +53,13 @@ public class MovementsApiImpl implements MovementsApi {
 
 
     }
+
+    @Override
+    public PageResult getMovementsById(Long userId, Integer page, Integer pagesize) {
+        Criteria criteria = Criteria.where("userId").in(userId);
+        Query query = Query.query(criteria).skip((page - 1) * pagesize).limit(pagesize).with(Sort.by(Sort.Order.desc("created")));
+        List<Movement> movements = mongoTemplate.find(query, Movement.class);
+        return new PageResult(page,pagesize, 0,movements);
+    }
+
 }
