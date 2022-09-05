@@ -36,7 +36,7 @@ public class MovementsController {
      * 查询我的动态
      */
     @GetMapping("/all")
-    public ResponseEntity findByUserId(Long userId,
+    public ResponseEntity myMovements(Long userId,
                                        @RequestParam(defaultValue = "1") Integer page,
                                        @RequestParam(defaultValue = "10") Integer pagesize) {
         Long userId1 = BaseContext.getUserId();
@@ -44,6 +44,12 @@ public class MovementsController {
 
         return ResponseEntity.ok(pr);
     }
+    @GetMapping
+    public ResponseEntity friendMovements(@RequestParam(defaultValue = "1") Integer page,
+                                          @RequestParam(defaultValue = "10")Integer pagesize){
+        PageResult pr = movementsService.findFriendMovements(page,pagesize);
 
 
+        return ResponseEntity.ok(pr);
+    }
 }

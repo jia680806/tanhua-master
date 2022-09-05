@@ -1,5 +1,6 @@
 package com.jia.tanhua.server.service;
 
+import cn.hutool.core.collection.CollUtil;
 import com.jia.tanhua.autoconfig.template.OssTemplate;
 import com.jia.tanhua.domain.UserInfo;
 import com.jia.tanhua.dubbo.api.MovementsApi;
@@ -20,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class MovementsService {
@@ -31,6 +33,7 @@ public class MovementsService {
     
     @DubboReference
     private UserInfoApi userInfoApi;
+
 
     public void publishMovements(Movement movement, MultipartFile[] imageContent) throws IOException {
         Long userId = BaseContext.getUserId();
@@ -70,5 +73,29 @@ public class MovementsService {
         pr.setItems(MovementsVoList);
 
         return pr;
+    }
+
+    public PageResult findFriendMovements(Integer page, Integer pagesize) {
+        Long userId = BaseContext.getUserId();
+
+        List<Movement> list = movementsApi.findFriendMovements(page,pagesize,userId);
+        if (CollUtil.isEmpty(list)){
+            return new PageResult();
+        }
+
+        List<Long> userIds = CollUtil.getFieldValues(list, "userId", Long.class);
+
+        Map<Long, UserInfo> map = userInfoApi.findByIds(userIds, null);
+
+        List<MovementsVo> vos = new ArrayList<>();
+        for (Movement movement : list) {
+            UserInfo userInfo = map.get(movement.getUserId());
+            if (userInfo!=null){
+                MovementsVo vo = MovementsVo.init(userInfo,movement);
+                vos.add(vo);
+            }
+        }
+    return new PageResult(page,pagesize,0,vos);
+
     }
 }

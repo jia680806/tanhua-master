@@ -1,13 +1,14 @@
 package com.jia.tanhua.dubbo.api;
 
+import cn.hutool.core.collection.CollUtil;
 import com.jia.tanhua.dubbo.utils.IdWorker;
 import com.jia.tanhua.dubbo.utils.TimeLineService;
 import com.jia.tanhua.mongo.Friend;
 import com.jia.tanhua.mongo.Movement;
 import com.jia.tanhua.mongo.MovementTimeLine;
-import com.jia.tanhua.vo.MovementsVo;
 import com.jia.tanhua.vo.PageResult;
 import org.apache.dubbo.config.annotation.DubboService;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -61,5 +62,28 @@ public class MovementsApiImpl implements MovementsApi {
         List<Movement> movements = mongoTemplate.find(query, Movement.class);
         return new PageResult(page,pagesize, 0,movements);
     }
+
+    /**
+     * 返回根据好友id 返回该好友圈子动态列表
+     * @param page
+     * @param pagesize
+     * @param friendId
+     * @return
+     */
+    @Override
+    public List<Movement> findFriendMovements(Integer page, Integer pagesize, Long friendId) {
+        //1.查询时间线表
+        Criteria criteria = Criteria.where("friendId").is(friendId);
+        Query query = Query.query(criteria).skip((page-1) * pagesize).limit(pagesize)
+                .with(Sort.by(Sort.Order.desc("created")));
+        List<MovementTimeLine> list = mongoTemplate.find(query, MovementTimeLine.class);
+
+        //2.根据时间线查询圈子动态的id
+        List<ObjectId> movementIds = CollUtil.getFieldValues(list, "movementId", ObjectId.class);
+        Query movementQuery = Query.query(Criteria.where("id").in(movementIds));
+        List<Movement> movementList = mongoTemplate.find(movementQuery, Movement.class);
+        return movementList;
+    }
+
 
 }
