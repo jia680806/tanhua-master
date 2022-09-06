@@ -104,5 +104,11 @@ public class MovementsApiImpl implements MovementsApi {
         return results.getMappedResults();
     }
 
+    @Override
+    public Movement findById(String movementId) {
+        Movement movement = mongoTemplate.findById(movementId, Movement.class);
+        return movement;
+    }
+
 
 }

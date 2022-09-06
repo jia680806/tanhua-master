@@ -126,4 +126,15 @@ public class MovementsService {
         }
         return  getPageResult(page,pagesize,list);
     }
+
+    public MovementsVo findOneMovement(String movementId) {
+        Movement movement = movementsApi.findById(movementId);
+        if (movement != null){
+            UserInfo userInfo = userInfoApi.findUserInfoById(BaseContext.getUserId());
+            MovementsVo movementsVo = MovementsVo.init(userInfo, movement);
+            return movementsVo;
+        }else
+            return null;
+
+    }
 }

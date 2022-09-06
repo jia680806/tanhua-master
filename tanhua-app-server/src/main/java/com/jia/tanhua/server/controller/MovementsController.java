@@ -4,6 +4,7 @@ import com.jia.tanhua.dubbo.api.UserInfoApi;
 import com.jia.tanhua.mongo.Movement;
 import com.jia.tanhua.server.interceptor.BaseContext;
 import com.jia.tanhua.server.service.MovementsService;
+import com.jia.tanhua.vo.MovementsVo;
 import com.jia.tanhua.vo.PageResult;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,5 +62,11 @@ public class MovementsController {
                                     @RequestParam(defaultValue = "10") Integer pagesize) {
         PageResult pr = movementsService.findRecommendMovements(page,pagesize);
         return ResponseEntity.ok(pr);
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity one(@PathVariable("id") String movementId){
+        MovementsVo movementsVo = movementsService.findOneMovement(movementId);
+        return ResponseEntity.ok(movementsVo);
+
     }
 }

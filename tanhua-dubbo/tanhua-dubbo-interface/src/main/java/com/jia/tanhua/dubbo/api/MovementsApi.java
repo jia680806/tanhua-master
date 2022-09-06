@@ -17,4 +17,6 @@ public interface MovementsApi {
     List<Movement> findMovementsByPids(List<Long> pids);
 
     List<Movement> randomMvents(Integer counts);
+
+    Movement findById(String movementId);
 }
