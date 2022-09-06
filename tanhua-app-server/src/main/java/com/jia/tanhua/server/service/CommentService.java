@@ -4,6 +4,7 @@ import com.jia.tanhua.dubbo.api.CommentApi;
 import com.jia.tanhua.enums.CommentType;
 import com.jia.tanhua.mongo.Comment;
 import com.jia.tanhua.server.interceptor.BaseContext;
+import com.jia.tanhua.vo.PageResult;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -25,5 +26,8 @@ public class CommentService {
         comment1.setCreated(System.currentTimeMillis());
         commentApi.save(comment1);
 
+    }
+
+    public PageResult findFriendMovements(String page, String pagesize) {
     }
 }
