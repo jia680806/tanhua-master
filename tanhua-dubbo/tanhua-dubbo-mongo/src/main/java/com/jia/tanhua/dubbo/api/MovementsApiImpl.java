@@ -12,6 +12,9 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.Aggregation;
+import org.springframework.data.mongodb.core.aggregation.AggregationResults;
+import org.springframework.data.mongodb.core.aggregation.TypedAggregation;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
@@ -83,6 +86,22 @@ public class MovementsApiImpl implements MovementsApi {
         Query movementQuery = Query.query(Criteria.where("id").in(movementIds));
         List<Movement> movementList = mongoTemplate.find(movementQuery, Movement.class);
         return movementList;
+    }
+
+    //根据pid数组查询动态
+    @Override
+    public List<Movement> findMovementsByPids(List<Long> pids) {
+        Criteria criteria = Criteria.where("pid").in(pids);
+        Query query = Query.query(criteria);
+        return mongoTemplate.find(query,Movement.class);
+    }
+
+    //随机获取多条动态数据
+    @Override
+    public List<Movement> randomMvents(Integer counts) {
+        TypedAggregation aggregation = Aggregation.newAggregation(Movement.class,Aggregation.sample(counts));
+        AggregationResults<Movement> results = mongoTemplate.aggregate(aggregation, Movement.class);
+        return results.getMappedResults();
     }
 
 

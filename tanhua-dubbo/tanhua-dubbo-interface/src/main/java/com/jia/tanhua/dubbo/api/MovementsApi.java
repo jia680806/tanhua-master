@@ -13,4 +13,8 @@ public interface MovementsApi {
     PageResult getMovementsById(Long userId, Integer page, Integer pagesize);
 
     List<Movement> findFriendMovements(Integer page, Integer pagesize, Long userId);
+
+    List<Movement> findMovementsByPids(List<Long> pids);
+
+    List<Movement> randomMvents(Integer counts);
 }

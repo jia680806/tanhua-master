@@ -2,6 +2,7 @@ package com.jia.tanhua.server.service;
 
 import cn.hutool.core.collection.CollUtil;
 import com.jia.tanhua.autoconfig.template.OssTemplate;
+import com.jia.tanhua.commons.utils.Constants;
 import com.jia.tanhua.domain.UserInfo;
 import com.jia.tanhua.dubbo.api.MovementsApi;
 import com.jia.tanhua.dubbo.api.UserInfoApi;
@@ -15,13 +16,13 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class MovementsService {
@@ -33,6 +34,10 @@ public class MovementsService {
     
     @DubboReference
     private UserInfoApi userInfoApi;
+
+    @Autowired
+    private RedisTemplate redisTemplate;
+
 
 
     public void publishMovements(Movement movement, MultipartFile[] imageContent) throws IOException {
@@ -79,6 +84,11 @@ public class MovementsService {
         Long userId = BaseContext.getUserId();
 
         List<Movement> list = movementsApi.findFriendMovements(page,pagesize,userId);
+        return getPageResult(page, pagesize, list);
+
+    }
+
+    private PageResult getPageResult(Integer page, Integer pagesize, List<Movement> list) {
         if (CollUtil.isEmpty(list)){
             return new PageResult();
         }
@@ -95,7 +105,25 @@ public class MovementsService {
                 vos.add(vo);
             }
         }
-    return new PageResult(page,pagesize,0,vos);
+        return new PageResult(page, pagesize, 0, vos);
+    }
 
+
+    public PageResult findRecommendMovements(Integer page, Integer pagesize) {
+        Long userId = BaseContext.getUserId();
+        String redisValue= (String) redisTemplate.opsForValue().get(Constants.MOVEMENTS_RECOMMEND + userId);
+        List<Movement> list = Collections.EMPTY_LIST;
+        if(StringUtils.isEmpty(redisValue)){
+            list = movementsApi.randomMvents(pagesize);
+        }else{
+           String[] values= redisValue.split(",");
+           if((page-1)*pagesize <values.length){
+               List<Long> pids = Arrays.stream(values).skip((page - 1) * pagesize).limit(pagesize)
+                       .map(e -> Long.valueOf(e)).collect(Collectors.toList());
+               list = movementsApi.findMovementsByPids(pids);
+           }
+
+        }
+        return  getPageResult(page,pagesize,list);
     }
 }
