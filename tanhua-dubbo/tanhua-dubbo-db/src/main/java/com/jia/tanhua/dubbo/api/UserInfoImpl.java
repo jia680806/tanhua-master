@@ -2,6 +2,7 @@ package com.jia.tanhua.dubbo.api;
 
 
 import cn.hutool.core.collection.CollUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.jia.tanhua.domain.UserInfo;
 import com.jia.tanhua.dubbo.mappers.UserInfoMapper;
@@ -59,5 +60,6 @@ public class UserInfoImpl implements UserInfoApi {
         return map;
 
     }
+
 
 }

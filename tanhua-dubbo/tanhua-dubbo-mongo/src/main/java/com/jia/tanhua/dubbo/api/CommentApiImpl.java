@@ -3,14 +3,18 @@ package com.jia.tanhua.dubbo.api;
 import com.jia.tanhua.enums.CommentType;
 import com.jia.tanhua.mongo.Comment;
 import com.jia.tanhua.mongo.Movement;
+import com.jia.tanhua.vo.PageResult;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.FindAndModifyOptions;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
+
+import java.util.List;
 
 @DubboService
 public class CommentApiImpl implements CommentApi{
@@ -51,5 +55,16 @@ public class CommentApiImpl implements CommentApi{
 
         return modify.statisCount(comment.getCommentType());
 
+    }
+
+    @Override
+    public  List<Comment> findComments(String movementId, CommentType commentType, Integer page, Integer pagesize) {
+        Criteria criteria =Criteria.where("publishId").is(new ObjectId(movementId))
+                .and("commentType").is(commentType.getType());
+        Query query = Query.query(criteria).skip((page-1)*pagesize).limit(pagesize)
+                .with(Sort.by(Sort.Order.desc("created")));
+        List<Comment> comments = mongoTemplate.find(query, Comment.class);
+
+        return comments;
     }
 }

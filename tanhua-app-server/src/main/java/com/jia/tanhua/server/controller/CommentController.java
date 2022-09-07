@@ -25,11 +25,11 @@ public class CommentController {
     }
 
     @GetMapping
-    public ResponseEntity findComments(@RequestParam(defaultValue = "1") String page,
-                                       @RequestParam(defaultValue = "10") String pagesize,
+    public ResponseEntity findComments(@RequestParam(defaultValue = "1") Integer page,
+                                       @RequestParam(defaultValue = "10") Integer pagesize,
                                        String movementId){
 
-        PageResult result =  commentService.findFriendMovements(page,pagesize);
+        PageResult result =  commentService.findComments(page,pagesize,movementId);
         return ResponseEntity.ok(result);
 
     }
